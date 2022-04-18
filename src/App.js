@@ -1,8 +1,14 @@
 import React from 'react';
-//inicio
+import { BrowserRouter } from 'react-router-dom';
+import Home from './pages/Home';
+
 class App extends React.Component {
   render() {
-    return (<p>TrybeTunes</p>);
+    return (
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>
+    );
   }
 }
 
