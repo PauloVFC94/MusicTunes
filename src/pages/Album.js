@@ -19,7 +19,6 @@ class Album extends Component {
 
   async componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    console.log(id);
     this.setState({
       load: true,
     });
@@ -31,7 +30,6 @@ class Album extends Component {
       album: musics[0].collectionName,
       img: musics[0].artworkUrl100,
     });
-    console.log(musics);
   }
 
   render() {
@@ -51,6 +49,7 @@ class Album extends Component {
                   <MusicCard
                     trackName={ faixas.trackName }
                     previewUrl={ faixas.previewUrl }
+                    trackId={ faixas.trackId }
                   />
                 </section>
               ))}
