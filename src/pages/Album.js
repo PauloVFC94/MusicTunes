@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import Loading from '../components/Loading';
 import MusicCard from '../components/MusicCard';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends Component {
   constructor() {
@@ -14,26 +15,31 @@ class Album extends Component {
       artista: '',
       album: '',
       img: '',
+      favorites: [],
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     const { match: { params: { id } } } = this.props;
-    this.setState({
-      load: true,
-    });
-    const musics = await getMusics(id);
-    this.setState({
-      load: false,
-      musicas: musics,
-      artista: musics[0].artistName,
-      album: musics[0].collectionName,
-      img: musics[0].artworkUrl100,
-    });
+    this.setState(
+      { load: true },
+      async () => {
+        const musics = await getMusics(id);
+        const favMusics = await getFavoriteSongs();
+        this.setState({
+          load: false,
+          musicas: musics,
+          artista: musics[0].artistName,
+          album: musics[0].collectionName,
+          img: musics[0].artworkUrl100,
+          favorites: [...favMusics],
+        });
+      },
+    );
   }
 
   render() {
-    const { load, musicas, artista, album, img } = this.state;
+    const { load, musicas, artista, album, img, favorites } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
@@ -50,6 +56,7 @@ class Album extends Component {
                     trackName={ faixas.trackName }
                     previewUrl={ faixas.previewUrl }
                     trackId={ faixas.trackId }
+                    favorites={ favorites }
                   />
                 </section>
               ))}
