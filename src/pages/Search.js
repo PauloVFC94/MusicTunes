@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
+import searchAlbumsAPI from '../services/searchAlbumsAPI';
+import Loading from '../components/Loading';
+import CardMusic from '../components/CardMusic';
 
 class Search extends Component {
   constructor() {
@@ -7,6 +10,11 @@ class Search extends Component {
     this.state = {
       disabled: true,
       artistName: '',
+      load: false,
+      artistLoad: false,
+      musicList: [],
+      show: false,
+      artistStorage: '',
     };
   }
 
@@ -23,26 +31,71 @@ class Search extends Component {
     return this.setState({ disabled: true });
   }
 
+  btnFunc = async () => {
+    const { artistName } = this.state;
+    const keySearch = artistName;
+    this.setState({
+      load: true,
+      show: true,
+      artistStorage: artistName,
+    });
+    const results = await searchAlbumsAPI(keySearch);
+    this.setState({
+      artistName: '',
+      disabled: true,
+      load: false,
+      artistLoad: true,
+      musicList: results,
+    });
+  }
+
   render() {
-    const { disabled } = this.state;
+    const { disabled, load, musicList, show, artistStorage } = this.state;
     return (
       <div data-testid="page-search">
         <Header />
-        <input
-          type="text"
-          name="artistName"
-          placeholder="Nome do Artista"
-          data-testid="search-artist-input"
-          onChange={ this.handleChangeSearch }
-        />
-        <button
-          type="button"
-          data-testid="search-artist-button"
-          name="btn-search"
-          disabled={ disabled }
-        >
-          Pesquisar
-        </button>
+        {load
+          ? <Loading />
+          : (
+            <div>
+              <input
+                type="text"
+                name="artistName"
+                placeholder="Nome do Artista"
+                data-testid="search-artist-input"
+                onChange={ this.handleChangeSearch }
+              />
+              <button
+                type="button"
+                data-testid="search-artist-button"
+                name="btn-search"
+                disabled={ disabled }
+                onClick={ this.btnFunc }
+              >
+                Pesquisar
+              </button>
+            </div>
+          )}
+        {show
+          ? <span>{`Resultado de álbuns de: ${artistStorage}`}</span>
+          : <span> </span>}
+        {musicList.length === 0
+          ? (
+            <span>Nenhum álbum foi encontrado</span>
+          ) : (
+            <div>
+              {musicList.map((album) => (
+                <section key={ album.collectionName }>
+                  <CardMusic
+                    collectionId={ album.collectionId }
+                    artworkUrl100={ album.artworkUrl100 }
+                    collectionName={ album.collectionName }
+                    artistName={ album.artistName }
+                  />
+                </section>
+              ))}
+            </div>
+          )}
       </div>
     );
   }
