@@ -50,7 +50,7 @@ class Search extends Component {
   }
 
   render() {
-    const { disabled, load, musicList, show, artistStorage } = this.state;
+    const { disabled, load, musicList, show, artistStorage, artistLoad } = this.state;
     return (
       <div data-testid="page-search">
         <Header />
@@ -79,13 +79,13 @@ class Search extends Component {
         {show
           ? <span>{`Resultado de álbuns de: ${artistStorage}`}</span>
           : <span> </span>}
-        {musicList.length === 0
+        {musicList.length === 0 && artistLoad
           ? (
             <span>Nenhum álbum foi encontrado</span>
           ) : (
             <div>
               {musicList.map((album) => (
-                <section key={ album.collectionName }>
+                <section key={ album.collectionId }>
                   <CardMusic
                     collectionId={ album.collectionId }
                     artworkUrl100={ album.artworkUrl100 }

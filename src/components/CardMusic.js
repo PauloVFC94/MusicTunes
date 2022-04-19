@@ -17,8 +17,9 @@ class CardMusic extends Component {
           data-testid={ `link-to-album-${collectionId}` }
         >
           <img src={ artworkUrl100 } alt={ `${artistName} ${collectionName}` } />
-          <span>{ collectionName }</span>
-          <span>{ artistName }</span>
+          <span>{ `Álbum: ${collectionName}` }</span>
+          <br />
+          <span>{ ` Artista: ${artistName}` }</span>
         </Link>
       </div>
     );
@@ -27,7 +28,7 @@ class CardMusic extends Component {
 
 CardMusic.propTypes = {
   artistName: PropTypes.string.isRequired,
-  collectionId: PropTypes.string.isRequired,
+  collectionId: PropTypes.number.isRequired,
   collectionName: PropTypes.string.isRequired,
   artworkUrl100: PropTypes.string.isRequired,
 };
