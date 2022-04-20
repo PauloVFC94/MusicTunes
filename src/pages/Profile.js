@@ -33,18 +33,20 @@ class Profile extends Component {
       <div data-testid="page-profile">
         <Header />
         { load
-          ? <Loading />
+          ? (<Loading />)
           : (
             <section>
+              <Link to="/profile/edit">
+                Editar perfil
+              </Link>
               <h2>{username}</h2>
               <h4>{useremail}</h4>
+              <p>{userdescription}</p>
               <img
                 src={ imgUrl }
                 data-testid="profile-image"
                 alt={ username }
               />
-              <p>{userdescription}</p>
-              <Link to="/profile/edit">Editar perfil</Link>
             </section>
           )}
       </div>
