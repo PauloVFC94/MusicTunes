@@ -61,6 +61,7 @@ class MusicCard extends Component {
               data-testid={ `checkbox-music-${trackId}` }
               checked={ checked }
               onChange={ (event) => { this.handleChecker(event, checked); } }
+              id="favorite"
             />
           </label>
         </div>
