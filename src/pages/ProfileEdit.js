@@ -108,6 +108,7 @@ class ProfileEdit extends Component {
                 onClick={ this.clickFun }
                 disabled={ disabled }
                 data-testid="edit-button-save"
+                name="profile-btn"
               >
                 Enviar
               </button>
