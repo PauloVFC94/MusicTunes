@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import { getUser, updateUser } from '../services/userAPI';
 import Loading from '../components/Loading';
+import './ProfileEdit.css';
 
 class ProfileEdit extends Component {
   constructor() {
@@ -79,30 +80,46 @@ class ProfileEdit extends Component {
           ? <Loading />
           : (
             <form>
-              <input
-                value={ username }
-                onChange={ this.handleChange }
-                data-testid="edit-input-name"
-                name="username"
-              />
-              <input
-                value={ useremail }
-                onChange={ this.handleChange }
-                data-testid="edit-input-email"
-                name="useremail"
-              />
-              <input
-                value={ userdescription }
-                onChange={ this.handleChange }
-                data-testid="edit-input-description"
-                name="userdescription"
-              />
-              <input
-                value={ imgUrl }
-                onChange={ this.handleChange }
-                data-testid="edit-input-image"
-                name="imgUrl"
-              />
+              <label htmlFor="username">
+                Nome do usuário:
+                <input
+                  value={ username }
+                  onChange={ this.handleChange }
+                  data-testid="edit-input-name"
+                  name="username"
+                  id="username"
+                />
+              </label>
+              <label htmlFor="useremail">
+                E-mail:
+                <input
+                  value={ useremail }
+                  onChange={ this.handleChange }
+                  data-testid="edit-input-email"
+                  name="useremail"
+                  id="useremail"
+                />
+              </label>
+              <label htmlFor="descrip">
+                Descrição:
+                <input
+                  value={ userdescription }
+                  onChange={ this.handleChange }
+                  data-testid="edit-input-description"
+                  name="userdescription"
+                  id="descrip"
+                />
+              </label>
+              <label htmlFor="foto">
+                Imagem:
+                <input
+                  value={ imgUrl }
+                  onChange={ this.handleChange }
+                  data-testid="edit-input-image"
+                  name="imgUrl"
+                  id="foto"
+                />
+              </label>
               <button
                 type="submit"
                 onClick={ this.clickFun }

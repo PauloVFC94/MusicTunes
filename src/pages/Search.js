@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from '../components/Loading';
 import CardMusic from '../components/CardMusic';
+import './Search.css';
 
 class Search extends Component {
   constructor() {
@@ -57,7 +58,7 @@ class Search extends Component {
         {load
           ? <Loading />
           : (
-            <div>
+            <div className="search-container">
               <input
                 type="text"
                 name="artistName"
@@ -83,7 +84,7 @@ class Search extends Component {
           ? (
             <span>Nenhum álbum foi encontrado</span>
           ) : (
-            <div>
+            <div className="album">
               {musicList.map((album) => (
                 <section key={ album.collectionId }>
                   <CardMusic

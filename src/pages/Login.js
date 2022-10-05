@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import Loading from '../components/Loading';
 import { createUser } from '../services/userAPI';
+import './Login.css';
+import trybetunes from './trybetunes.png';
 
 class Login extends Component {
   constructor() {
@@ -49,25 +51,33 @@ class Login extends Component {
     if (logged) return <Redirect to="/search" />;
 
     return (
-      <div data-testid="page-login">
-        <img src="https://w7.pngwing.com/pngs/445/167/png-transparent-spotify-computer-icons-music-leather-logo-hand-logo-music-download-thumbnail.png" alt="xab" />
-        <input
-          data-testid="login-name-input"
-          type="text"
-          name="username"
-          placeholder="Login"
-          onChange={ this.handleChanger }
-          value={ name }
+      <div data-testid="page-login" className="center">
+        <img
+          src={ trybetunes }
+          alt="trybetunes"
+          className="login-img"
         />
-        <button
-          data-testid="login-submit-button"
-          type="submit"
-          name="button-login"
-          disabled={ buttonDisabled }
-          onClick={ this.btnLogin }
-        >
-          Entrar
-        </button>
+        <div className="login-container">
+          <input
+            data-testid="login-name-input"
+            className="login-input"
+            type="text"
+            name="username"
+            placeholder="Login"
+            onChange={ this.handleChanger }
+            value={ name }
+          />
+          <button
+            data-testid="login-submit-button"
+            type="submit"
+            className="login-btn"
+            name="button-login"
+            disabled={ buttonDisabled }
+            onClick={ this.btnLogin }
+          >
+            Entrar
+          </button>
+        </div>
       </div>
     );
   }

@@ -1,0 +1,30 @@
+.card-music {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 600px;
+  height: 100px;
+  margin: 10px;
+  border-radius: 20px;
+  box-shadow: 2px 2px gray;
+}
+
+.img-div-music {
+  display: flex;
+  box-shadow: 2px 2px gray;
+  width: 80px;
+  height: 80px;
+}
+
+.info-div-music {
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+    align-items: center;
+    font-size: 20px;
+}
+
+.checkbox-div-music {
+    display: flex;
+    flex-direction: column;
+}

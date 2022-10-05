@@ -29,9 +29,9 @@ export const getUser = () => new Promise((resolve) => {
 export const createUser = (user) => new Promise((resolve) => {
   const emptyUser = {
     name: '',
-    email: '',
-    image: '',
-    description: '',
+    email: 'email@email.com',
+    image: 'https://freesvg.org/img/abstract-user-flat-1.png',
+    description: 'lorem ipsum',
   };
   saveUser({ ...emptyUser, ...user });
   simulateRequest(SUCCESS_STATUS)(resolve);

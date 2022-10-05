@@ -5,6 +5,7 @@ import getMusics from '../services/musicsAPI';
 import Loading from '../components/Loading';
 import MusicCard from '../components/MusicCard';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import './Album.css';
 
 class Album extends Component {
   constructor() {
@@ -46,20 +47,29 @@ class Album extends Component {
         {load
           ? <Loading />
           : (
-            <div>
-              <img src={ img } alt={ album } />
-              <p data-testid="album-name">{ album }</p>
-              <p data-testid="artist-name">{ artista }</p>
-              {musicas.slice(1).map((faixas) => (
-                <section key={ faixas.trackId }>
-                  <MusicCard
-                    trackName={ faixas.trackName }
-                    previewUrl={ faixas.previewUrl }
-                    trackId={ faixas.trackId }
-                    favorites={ favorites }
-                  />
-                </section>
-              ))}
+            <div className="container-album-infos">
+              <div className="album-info">
+                <div className="img-div-album">
+                  <img src={ img } alt={ album } />
+                </div>
+                <div className="letter-info">
+                  <p data-testid="album-name">{ album }</p>
+                  <p data-testid="artist-name">{ artista }</p>
+                </div>
+              </div>
+              <div className="music-list">
+                {musicas.slice(1).map((faixas) => (
+                  <section key={ faixas.trackId }>
+                    <MusicCard
+                      img={ img }
+                      trackName={ faixas.trackName }
+                      previewUrl={ faixas.previewUrl }
+                      trackId={ faixas.trackId }
+                      favorites={ favorites }
+                    />
+                  </section>
+                ))}
+              </div>
             </div>
           )}
       </div>

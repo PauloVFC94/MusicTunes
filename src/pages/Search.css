@@ -1,0 +1,32 @@
+.search-container {
+  display: flex;
+  justify-content: center;
+}
+
+.search-container input {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 519px;
+  height: 45px;
+  background: #FFFFFF;
+  border: 1px solid #E1E5EB;
+  border-radius: 0px;
+  margin: 10px;
+  text-align: center;
+}
+
+.search-container button {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 519px;
+  height: 45px;
+  background: #036B52;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+  color: white;
+}

@@ -1,0 +1,21 @@
+.container-album-infos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.album-info {
+    display: flex;
+    box-shadow: 2px 2px gray;
+    width: 600px;
+    padding: 20px;
+    flex-direction: row;
+    justify-content: space-around;
+    border-radius: 10px;
+}
+
+.music-list {
+    margin: 10px;
+
+}

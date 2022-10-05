@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
+import './MusicCard.css';
 
 class MusicCard extends Component {
   constructor() {
@@ -45,25 +46,29 @@ class MusicCard extends Component {
     return (load
       ? <Loading />
       : (
-        <div>
-          <p>{ trackName }</p>
-          <audio data-testid="audio-component" src={ previewUrl } controls>
-            <track kind="captions" />
-            O seu navegador não suporta o elemento
-            <code>audio</code>
-          </audio>
-          <label
-            htmlFor="favorite"
-          >
-            Favorita
-            <input
-              type="checkbox"
-              data-testid={ `checkbox-music-${trackId}` }
-              checked={ checked }
-              onChange={ (event) => { this.handleChecker(event, checked); } }
-              id="favorite"
-            />
-          </label>
+        <div className="card-music">
+          <div className="info-div-music">
+            <p>{ trackName }</p>
+            <audio data-testid="audio-component" src={ previewUrl } controls>
+              <track kind="captions" />
+              O seu navegador não suporta o elemento
+              <code>audio</code>
+            </audio>
+          </div>
+          <div className="checkbox-div-music">
+            <label
+              htmlFor="favorite"
+            >
+              Favorita
+              <input
+                type="checkbox"
+                data-testid={ `checkbox-music-${trackId}` }
+                checked={ checked }
+                onChange={ (event) => { this.handleChecker(event, checked); } }
+                id="favorite"
+              />
+            </label>
+          </div>
         </div>
       )
     );

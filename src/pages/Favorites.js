@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from '../components/Loading';
 import MusicCard from '../components/MusicCard';
+import './Favorites.css';
 
 class Favorites extends Component {
   constructor() {
@@ -45,16 +46,18 @@ class Favorites extends Component {
         : (
           <div data-testid="page-favorites">
             <Header />
-            {list.map((music) => (
-              <section key={ music.trackId }>
-                <MusicCard
-                  trackName={ music.trackName }
-                  trackId={ music.trackId }
-                  previewUrl={ music.previewUrl }
-                  favorites={ list }
-                />
-              </section>
-            ))}
+            <div className="favorite-list">
+              {list.map((music) => (
+                <section key={ music.trackId }>
+                  <MusicCard
+                    trackName={ music.trackName }
+                    trackId={ music.trackId }
+                    previewUrl={ music.previewUrl }
+                    favorites={ list }
+                  />
+                </section>
+              ))}
+            </div>
           </div>
         )
     );
